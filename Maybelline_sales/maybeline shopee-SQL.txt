@@ -1,0 +1,44 @@
+SELECT 
+Category,
+CAST(SUM(Omset)AS NUMERIC) AS Total_Omset
+FROM `numeric-habitat-325015.Maybelline.Categorized_Maybelline`
+GROUP BY Category 
+ORDER BY Total_Omset DESC;
+
+SELECT Category, 
+COUNT(Category) AS Count_Category 
+FROM `numeric-habitat-325015.Maybelline.Categorized_Maybelline`
+GROUP BY Category 
+ORDER BY Count_Category DESC;
+
+SELECT 
+Category,
+ROUND(CAST(AVG(Omset) AS NUMERIC),0) AS Avg_Omset
+FROM `numeric-habitat-325015.Maybelline.Categorized_Maybelline`
+GROUP BY Category 
+ORDER BY Avg_Omset DESC;
+
+SELECT 
+Nama_Produk,
+Category,
+Jumlah_Terjual,
+CAST(Harga AS NUMERIC) AS Harga_Produk,
+ROUND(CAST(Omset AS NUMERIC),0) AS Omset
+FROM `numeric-habitat-325015.Maybelline.Categorized_Maybelline` 
+WHERE Category = 'Lip Product' 
+ORDER BY Jumlah_Terjual DESC;
+
+SELECT 
+Category,
+CAST(SUM(Jumlah_Terjual)AS NUMERIC) AS Total_Terjual
+FROM `numeric-habitat-325015.Maybelline.Categorized_Maybelline`
+GROUP BY Category 
+ORDER BY Total_Terjual DESC;
+
+
+SELECT 
+Category,
+ROUND(CAST(SUM(Jumlah_Terjual)AS NUMERIC)/265597*100,2) AS Persentase_Penjualan
+FROM `numeric-habitat-325015.Maybelline.Categorized_Maybelline`
+GROUP BY Category 
+ORDER BY Persentase_Penjualan DESC;
